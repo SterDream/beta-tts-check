@@ -4,7 +4,7 @@ from .F0_MB_iSTFT_VITS import utils as utils
 from .F0_MB_iSTFT_VITS.text.phonemize.IPA_tokenizer import Tokenizer
 
 from .F0_MB_iSTFT_VITS.text.phonemize.symbols import symbols
-from .F0_MB_iSTFT_VITS.text import text_to_sequence
+from .F0_MB_iSTFT_VITS.text import text_to_sequence_inference
 
 import os
 import torch
@@ -12,7 +12,7 @@ import soundfile as sf
 
 
 def get_text(text, hps):
-    x_tst, x_tst_lengths, lang = text_to_sequence(text)
+    x_tst, x_tst_lengths, lang = text_to_sequence_inference(text)
     if hps.data.add_blank:
         x_tst = commons.intersperse(x_tst, 0)
     return x_tst, x_tst_lengths, lang
